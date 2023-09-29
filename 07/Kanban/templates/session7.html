@@ -90,8 +90,8 @@
 
   <body>
     <header>
-      <h1>Kanban Board S4</h1>
-      <a href="#" class="logout">Logout</a>
+      <h1>Kanban Board S7</h1>
+      <!-- <a href="#" class="logout">Logout</a> -->
     </header>
 
     <div style="padding: 20px">
@@ -117,40 +117,107 @@
       </form>
     </div>
 
+    <!-- ... -->
     <div class="columns">
-      <div class="column">
+      <div
+        class="column"
+        ondrop="drop(event, 'toDo')"
+        ondragover="allowDrop(event)"
+      >
         <h2>To Do</h2>
         <ul>
           {% for task in tasks['toDo'] %}
-          <div class="task">{{ task.description }}</div>
+          <div
+            class="task"
+            draggable="true"
+            ondragstart="drag(event, '{{ task.id }}')"
+          >
+            {{ task.description }}
+          </div>
           {% endfor %}
         </ul>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        ondrop="drop(event, 'inProgress')"
+        ondragover="allowDrop(event)"
+      >
         <h2>In Progress</h2>
         <ul>
           {% for task in tasks['inProgress'] %}
-          <div class="task">{{ task.description }}</div>
+          <div
+            height="20px"
+            class="task"
+            draggable="true"
+            ondragstart="drag(event, '{{ task.id }}')"
+          >
+            {{ task.description }}
+          </div>
           {% endfor %}
         </ul>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        ondrop="drop(event, 'inReview')"
+        ondragover="allowDrop(event)"
+      >
         <h2>In Review</h2>
         <ul>
           {% for task in tasks['inReview'] %}
-          <div class="task">{{ task.description }}</div>
+          <div
+            class="task"
+            draggable="true"
+            ondragstart="drag(event, '{{ task.id }}')"
+          >
+            {{ task.description }}
+          </div>
           {% endfor %}
         </ul>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        ondrop="drop(event, 'done')"
+        ondragover="allowDrop(event)"
+      >
         <h2>Done</h2>
         <ul>
-          {% for task in tasks['Done'] %}
-          <div class="task">{{ task.description }}</div>
+          {% for task in tasks['done'] %}
+          <div
+            height="20px"
+            class="task"
+            draggable="true"
+            ondragstart="drag(event, '{{ task.id }}')"
+          >
+            {{ task.description }}
+          </div>
           {% endfor %}
         </ul>
       </div>
     </div>
+    <!-- ... -->
+
     <footer>Copyright &copy; 2023 Nathe</footer>
+    <script>
+      let draggedTaskId = null;
+
+      function drag(event, taskId) {
+        draggedTaskId = taskId;
+      }
+
+      function allowDrop(event) {
+        event.preventDefault();
+      }
+
+      function drop(event, column) {
+        event.preventDefault();
+        fetch(`/move_task/${draggedTaskId}/${column}`, {
+          method: "POST",
+        }).then((response) => {
+          if (response.ok) {
+            window.location.reload();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
