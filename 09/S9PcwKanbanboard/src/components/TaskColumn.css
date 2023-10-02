@@ -1,0 +1,7 @@
+.kanban-column {
+    flex: 1;
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    min-height: 300px;
+  }

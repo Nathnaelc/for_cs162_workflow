@@ -1,3 +1,7 @@
+## Notes
+
+Please check all the folders for the PCWs since the recent PCWs are connected, I kind of merged them to better structure them than moving one class's PCW to another one!
+
 ## React (part 1)
 
 **Please note that

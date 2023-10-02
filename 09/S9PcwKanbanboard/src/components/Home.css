@@ -1,0 +1,17 @@
+
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap; 
+  gap: 10px; 
+}
+
+.kanban-column {
+  flex: 1;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  min-height: 700px;
+  box-sizing: border-box; 
+}

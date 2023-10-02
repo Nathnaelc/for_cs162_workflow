@@ -1,5 +1,5 @@
 # Import required modules from Flask and other files
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 from db import db
 from tasks import Task
 
@@ -13,6 +13,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize the database with the app
 db.init_app(app)
 
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
 # Route for the home page
 
 
@@ -43,24 +47,22 @@ def add_task():
     # Redirect to the home page
     return redirect(url_for('index'))
 
-# Route to move a task to a different column, only allows POST method
 
-
-@app.route('/move_task/<task_id>/<column>', methods=['POST'])
-def move_task(task_id, column):
-    # Query the task by its ID
-    task = Task.query.get(task_id)
-    # Check if the task exists
-    if task:
-        # Update the column of the task
-        task.column = column
-        # Commit the changes to the database
-        db.session.commit()
-        # Return success status as JSON
-        return jsonify({'success': True})
-    else:
-        # Return failure status as JSON if task doesn't exist
-        return jsonify({'success': False})
+# @app.route('/move_task/<task_id>/<column>', methods=['POST'])
+# def move_task(task_id, column):
+#     # Query the task by its ID
+#     task = Task.query.get(task_id)
+#     # Check if the task exists
+#     if task:
+#         # Update the column of the task
+#         task.column = column
+#         # Commit the changes to the database
+#         db.session.commit()
+#         # Return success status as JSON
+#         return jsonify({'success': True})
+#     else:
+#         # Return failure status as JSON if task doesn't exist
+#         return jsonify({'success': False})
 
 
 # Main entry point of the app
