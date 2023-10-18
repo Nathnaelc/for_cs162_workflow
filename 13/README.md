@@ -1,0 +1,6 @@
+All the database code works perfectly.
+I used sqlite vscode extension as always to test the code. feel free to check it with a database method you like.
+
+since the output is in table and not copiable to the code files or this readme file, I couldn't paste the code output but you can see it running the queries insert then fetch queries.
+
+[![The Ecommerce ticket system](https://mermaid.ink/img/pako:eNqVUs1uwyAMfhXkc_sC3KptT9AdI0VW8FLUABE2hyrJu4-kaRq2atIuyP6w_P3AAE0wBBoovltsI7rKK_WWWIKjyGqYW6WaFaitUdbLHfToSLFE69s7QA5tVyD9Jfj9zDQfn7a5kmy7ZWmLzS_pLHOiWm59ScqCkriAmkgoZGoUZXIh1tF60QX-jS-iTi35pyacu_-Z3VmrT8y29a7YuEHF2hfmf3JP5YuM4_E4DluIeh_WPt1irlCkn6w753_NPyTBATJRNm7yj1mMVSAXyjGCzqXBeK2g8lOewyThfPMNaImJDpD6OfL1j5Xgh7ESIugv7Jimbx2D5JY?type=png)](https://mermaid.live/edit#pako:eNqVUs1uwyAMfhXkc_sC3KptT9AdI0VW8FLUABE2hyrJu4-kaRq2atIuyP6w_P3AAE0wBBoovltsI7rKK_WWWIKjyGqYW6WaFaitUdbLHfToSLFE69s7QA5tVyD9Jfj9zDQfn7a5kmy7ZWmLzS_pLHOiWm59ScqCkriAmkgoZGoUZXIh1tF60QX-jS-iTi35pyacu_-Z3VmrT8y29a7YuEHF2hfmf3JP5YuM4_E4DluIeh_WPt1irlCkn6w753_NPyTBATJRNm7yj1mMVSAXyjGCzqXBeK2g8lOewyThfPMNaImJDpD6OfL1j5Xgh7ESIugv7Jimbx2D5JY)
