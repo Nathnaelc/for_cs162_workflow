@@ -44,17 +44,17 @@ output:
 
 
 
--- DELETE FROM Submissions;
--- DELETE FROM Assignments;
--- DELETE FROM Enrollments;
--- DELETE FROM Students;
--- DELETE FROM Instructors;
--- DELETE FROM Courses;
+-- Transaction for adding a new course and enrolling a student
+BEGIN TRANSACTION;
+    INSERT INTO Courses (course_name, description) VALUES ('New Course', 'This is a new course.');
+    INSERT INTO Enrollments (student_id, course_id) VALUES (1, LAST_INSERT_ROWID());
+COMMIT;
 
--- -- Reset auto-increment counters
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Submissions';
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Assignments';
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Enrollments';
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Students';
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Instructors';
--- UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Courses';
+-- Explanation: This transaction ensures that when a new course is added, a student is also enrolled in it. If either operation fails, the transaction will be rolled back.
+
+-- Transaction for adding a new assignment and a submission
+BEGIN TRANSACTION;
+    INSERT INTO Assignments (course_id, title, due_date) VALUES (1, 'New Assignment', '2023-12-31');
+    INSERT INTO Submissions (assignment_id, student_id, submission_date, grade) VALUES (LAST_INSERT_ROWID(), 1, '2023-11-11', 90);
+COMMIT;
+-- Explanation: This transaction ensures that when a new assignment is added to a course, a submission is also created for it. If either operation fails, the transaction will be rolled back.

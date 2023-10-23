@@ -38,3 +38,20 @@ WHERE m.patient_id = 1;
 -- 36	disintermediate world-class technologies	Implemented value-added data-warehouse
 -- 57	facilitate back-end web-readiness	Synergistic even-keeled middleware
 -- 64	optimize enterprise channels	Phased context-sensitive intranet
+
+-- Transaction for adding a new patient and scheduling an appointment
+BEGIN TRANSACTION;
+    INSERT INTO Patients (name, email, dob) VALUES ('John Doe', 'john.doe@example.com', '1980-01-01');
+    INSERT INTO Appointments (patient_id, doctor_id, appointment_date) VALUES (LAST_INSERT_ROWID(), 1, '2023-10-10');
+COMMIT;
+
+-- Explanation: This transaction ensures that when a new patient is added, an appointment is also scheduled for them. If either operation fails, the transaction will be rolled back, maintaining data integrity.
+
+-- Transaction for updating a medical record and adding a prescription
+BEGIN TRANSACTION;
+    UPDATE MedicalRecords SET diagnosis = 'Updated Diagnosis', treatment = 'Updated Treatment' WHERE record_id = 1;
+    INSERT INTO Prescriptions (patient_id, medication, dosage) VALUES (1, 'NewMed', '50mg');
+COMMIT;
+
+-- Explanation: This transaction ensures that when a medical record is updated, a new prescription is also added for the patient. If either operation fails, the transaction will be rolled back.
+
