@@ -97,3 +97,31 @@ for _ in range(5):
 
 # Commit the transaction
 session.commit()
+
+# Nathe
+all_cars = session.query(Car).all()
+for car in all_cars:
+    print(car.car_id, car.model, car.make, car.year, car.status)
+
+all_customers = session.query(Customer).all()
+for customer in all_customers:
+    print(customer.customer_id, customer.name, customer.email, customer.phone)
+
+    all_rentals = session.query(Rental).all()
+for rental in all_rentals:
+    print(rental.rental_id, rental.car_id, rental.customer_id,
+          rental.start_date, rental.end_date, rental.total_price)
+
+    all_maintenance = session.query(Maintenance).all()
+for maintenance in all_maintenance:
+    print(maintenance.maintenance_id, maintenance.car_id,
+          maintenance.start_date, maintenance.end_date, maintenance.cost)
+
+    available_cars = session.query(Car).filter_by(status='Available').all()
+for car in available_cars:
+    print(car.car_id, car.model, car.make, car.year, car.status)
+
+    customer_rentals = session.query(Rental).filter_by(customer_id=1).all()
+for rental in customer_rentals:
+    print(rental.rental_id, rental.car_id, rental.customer_id,
+          rental.start_date, rental.end_date, rental.total_price)
