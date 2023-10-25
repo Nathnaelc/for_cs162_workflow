@@ -65,7 +65,7 @@ Abstraction is important for several reasons:
 
 ### Argument for Easier Extension
 
-In the context of extending the code to include more features or functionalities, abstraction plays a crucial role. For example, in the object-oriented paradigm, the `Blackjack` class serves as an abstraction layer that encapsulates all the functionalities related to a game of Blackjack (See lines X to Y in OOP implementation). This makes it easier to add new features or make changes as everything related to Blackjack is in one place.
+In the context of extending the code to include more features or functionalities, abstraction plays a crucial role. For example, in the object-oriented paradigm, the `Blackjack` class serves as an abstraction layer that encapsulates all the functionalities related to a game of Blackjack. This makes it easier to add new features or make changes as everything related to Blackjack is in one place.
 
 In contrast, the functional paradigm, although effective, scatters functionalities across different functions (See lines A to B in functional implementation). This could make it harder to manage and extend, especially for larger, more complex systems.
 
