@@ -43,7 +43,7 @@ VALUES
 -- Insert data into the Customer table
 INSERT INTO Customer (name, email)
 VALUES
-    ('Alice Johnson', 'alice@example.com'),
+    ('Mera Johnson', 'Mera@example.com'),
     ('David Smith', 'david@example.com'),
     ('Eve Wilson', 'eve@example.com');
 

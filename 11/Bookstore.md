@@ -38,6 +38,6 @@ FROM Customer C
 INNER JOIN "Order" O ON C.id = O.customerId
 WHERE O.date = '2023-10-10';
 
-| name          | email             |
-| ------------- | ----------------- |
-| Alice Johnson | alice@example.com |
+| name         | email            |
+| ------------ | ---------------- |
+| Mera Johnson | Mera@example.com |
