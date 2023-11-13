@@ -1,21 +1,23 @@
 from flask import request, jsonify
 import functools
-
-users = {"Booker": "password",
-         "Annabel": "password",
-         "Steve": "password",
-         "Tawny": "password",
-         "Kasha": "password",
-         "Tameika": "password",
-         "Marie": "password",
-         "Samual": "password",
-         "Cyrus": "password",
-         "Joya": "password"}
+from .database import ok_user_and_password
 
 
-def ok_user_and_password(username, password):
-    """Test whether the supplied username and password match."""
-    return users.get(username) == password
+# users = {"Booker": "password",
+#          "Annabel": "password",
+#          "Steve": "password",
+#          "Tawny": "password",
+#          "Kasha": "password",
+#          "Tameika": "password",
+#          "Marie": "password",
+#          "Samual": "password",
+#          "Cyrus": "password",
+#          "Joya": "password"}
+
+
+# def ok_user_and_password(username, password):
+#     """Test whether the supplied username and password match."""
+#     return users.get(username) == password
 
 
 def authenticate():
@@ -31,7 +33,6 @@ def authenticate():
 
 def requires_authorization(f):
     """A python decorator which requires HTTP basic authentication."""
-
     @functools.wraps(f)
     def decorated(*args, **kwargs):
         auth = request.authorization
