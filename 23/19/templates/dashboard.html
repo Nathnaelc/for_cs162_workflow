@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+    {% if user %}
+    <p>Welcome, {{ user.email }}!</p>
+    {% else %}
+    <p>Welcome, Guest!</p>
+    {% endif %}
+
+    <!-- Display the last calculation result -->
+    {% if last_result is not none %}
+    <p>Last result: {{ last_result }}</p>
+    {% endif %}
+
+    <form action="/calculate" method="post">
+      <input type="text" name="expression" placeholder="Enter expression" />
+      <input type="submit" value="Calculate" />
+    </form>
+    <h2>History</h2>
+    <ul>
+      {% for entry in history %}
+      <li>{{ entry.expression }} = {{ entry.result }}</li>
+      {% endfor %}
+    </ul>
+    <a href="/logout">Logout</a>
+  </body>
+</html>

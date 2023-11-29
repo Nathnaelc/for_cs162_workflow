@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your App Name</title>
+    <!-- Add your CSS files here -->
+  </head>
+  <body>
+    <header>
+      <!-- Navigation bar or header content goes here -->
+      {% if 'user_id' in session %}
+      <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+      <a href="{{ url_for('auth.login') }}">Login</a>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+      {% endif %}
+    </header>
+
+    <main>
+      <!-- This block will be overridden by other templates -->
+      {% block content %} {% endblock %}
+    </main>
+
+    <footer>
+      <!-- Footer content goes here -->
+      <p>&copy; 2023 Your App Name</p>
+    </footer>
+
+    <!-- Add your JavaScript files here -->
+  </body>
+</html>
