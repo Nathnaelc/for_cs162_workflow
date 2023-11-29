@@ -21,13 +21,16 @@ def create_database(app):
 @app.route('/')
 def index():
     user = None
-    # Retrieve and remove the result from the session
     last_result = session.pop('last_result', None)
+
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
-        history = History.query.filter_by(user_id=user.id).all()
-        return render_template('dashboard.html', user=user, history=history, last_result=last_result)
-    # Redirect to login if not logged in
+        if user:
+            history = History.query.filter_by(user_id=user.id).all()
+            return render_template('dashboard.html', user=user, history=history, last_result=last_result)
+        else:
+            session.pop('user_id', None)  # Remove invalid user_id from session
+
     return redirect(url_for('auth.login'))
 
 
