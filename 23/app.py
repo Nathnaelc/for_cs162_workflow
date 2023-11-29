@@ -10,7 +10,7 @@ app.register_blueprint(auth_blueprint)
 
 db.init_app(app)
 
-# Add this function to create tables
+# function to create tables
 
 
 def create_database(app):
