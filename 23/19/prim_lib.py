@@ -17,7 +17,8 @@ def is_prime_slow(n):
     return True
 
 
-def is_prime_fast(n, k=5):  # Miller-Rabin
+# Miller-Rabin
+def is_prime_fast(n, k=5):
     """
     Check if a number is prime using the fast Miller-Rabin method.
     :param n: The number to check.
